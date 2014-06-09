@@ -44,7 +44,8 @@ class HangmanGame {
         }
     }
     
-    // Returns all the right guesses made by the player
+    // Returns a string of all the right guesses made by the player
+    // Prints "_" if the user has not guessed the letter in the answer
     func getRightGuesses() -> String {
         var rightGuesses = ""
         for char in answer {
@@ -67,7 +68,7 @@ class HangmanGame {
         return rightGuesses
     }
     
-    // Print all the letters guessed by the player
+    // Prints all the letters guessed by the player
     func printUsedLetters() {
         if (allGuesses.isEmpty) {
             println("nothing")
@@ -79,12 +80,16 @@ class HangmanGame {
         }
     }
     
+    // Prompts the user for the answer
+    // Stores user's answer in .answer
     func askAnswer() {
         println("What is the answer? ")
         answer = trim(input().uppercaseString)
         clearScreen()
     }
     
+    // Prompts the user for a guess
+    // Stores user's guess in .guess
     func askLetter() {
         var invalidGuess = true
         println("What is your guess? ")
@@ -106,6 +111,9 @@ class HangmanGame {
         }
     }
     
+    // Checks to see if the guessed letter is a part of the answer
+    // Increments .numberOfWrongGuesses if not
+    // Adds the user's guess to .allGuesses
     func checkLetter() {
         var letterIsRight = false
         for char in answer {
@@ -119,7 +127,11 @@ class HangmanGame {
         allGuesses.append(guess)
     }
     
-    func checkGameStatus() {
+    // Checks to see if the game has ended
+    // Changes .inProgress to false if:
+    //    the user has guessed all the letters in the answer
+    //    the user has made more than 6 wrong guesses
+    func updateGameStatus() {
         inProgress = false
         let rightGuesses = getRightGuesses()
         // Check if all letters have been guessed
@@ -134,6 +146,7 @@ class HangmanGame {
         }
     }
     
+    // Draws the hangman, answers, guesses, and game state
     func drawHangman() {
         // Line 1
         println("  __________     Answer:")
@@ -185,6 +198,7 @@ class HangmanGame {
     /* Public methods                                 */
     /**************************************************/
     
+    // Starts the game and runs the main game loop
     func play() {
         askAnswer()
         while (inProgress) {
@@ -192,7 +206,7 @@ class HangmanGame {
             askLetter()
             checkLetter()
             clearScreen()
-            checkGameStatus()
+            updateGameStatus()
         }
         drawHangman()
     }
