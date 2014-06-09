@@ -241,6 +241,7 @@
 				63DF1F8B1943FA8F0044E8A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
