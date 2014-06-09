@@ -48,16 +48,20 @@ class HangmanGame {
     func getRightGuesses() -> String {
         var rightGuesses = ""
         for char in answer {
-            var charGuessed = false
-            for guess in allGuesses {
-                if (char == guess) {
-                    charGuessed = true
-                }
-            }
-            if charGuessed {
-                rightGuesses += char + " "
+            if (char == " ") {
+                rightGuesses += "  "
             } else {
-                rightGuesses += "_ "
+                var charGuessed = false
+                for guess in allGuesses {
+                    if (char == guess) {
+                        charGuessed = true
+                    }
+                }
+                if charGuessed {
+                    rightGuesses += char + " "
+                } else {
+                    rightGuesses += "_ "
+                }
             }
         }
         return rightGuesses
