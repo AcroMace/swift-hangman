@@ -9,14 +9,4 @@
 import Foundation
 
 var game = HangmanGame()
-game.askAnswer()
-
-while (game.inProgress) {
-    game.drawHangman()
-    game.askLetter()
-    game.checkLetter()
-    game.clearScreen()
-    game.checkGameStatus()
-}
-
-game.drawHangman()
+game.play()

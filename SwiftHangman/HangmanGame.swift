@@ -29,11 +29,6 @@ class HangmanGame {
     // The letter entered by the player
     var guess: Character = " "
     
-    
-    /**************************************************/
-    /* Public properties                              */
-    /**************************************************/
-    
     // Whether or not game is in progress
     var inProgress = true
     
@@ -79,11 +74,6 @@ class HangmanGame {
             println()
         }
     }
-    
-    
-    /**************************************************/
-    /* Public methods                                 */
-    /**************************************************/
     
     func askAnswer() {
         println("What is the answer? ")
@@ -170,5 +160,21 @@ class HangmanGame {
         }
     }
     
+    
+    /**************************************************/
+    /* Public methods                                 */
+    /**************************************************/
+    
+    func play() {
+        askAnswer()
+        while (inProgress) {
+            drawHangman()
+            askLetter()
+            checkLetter()
+            clearScreen()
+            checkGameStatus()
+        }
+        drawHangman()
+    }
     
 }
