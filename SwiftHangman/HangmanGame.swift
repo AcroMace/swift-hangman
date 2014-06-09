@@ -86,8 +86,24 @@ class HangmanGame {
     }
     
     func askLetter() {
-        print("What is your guess? ")
-        guess = Character(input().uppercaseString.substringToIndex(1))
+        var invalidGuess = true
+        println("What is your guess? ")
+        while invalidGuess {
+            guess = Character(input().uppercaseString.substringToIndex(1))
+            invalidGuess = false
+            if (guess == " " || guess == "\n") {
+                invalidGuess = true
+            } else {
+                for char in allGuesses {
+                    if (guess == char) {
+                        invalidGuess = true
+                    }
+                }
+            }
+            if invalidGuess {
+                print("Please enter a letter you have not tried before: ")
+            }
+        }
     }
     
     func checkLetter() {
