@@ -127,27 +127,29 @@ class HangmanGame {
     
     func drawHangman() {
         // Line 1
-        println("  __________")
+        println("  __________     Answer:")
         // Line 2
-        println("  |    |         Answer:")
-        // Line 3
-        print("  |")
-        if (numberOfWrongGuesses >= 1) {
-            print("    O         ")
-        } else {
-            print("              ")
-        }
+        print("  |    |         ")
         println(getRightGuesses())
+        // Line 3
+        print("  |    ")
+        if (numberOfWrongGuesses >= 1) {
+            println("O")
+        } else {
+            println()
+        }
         // Line 4
         print("  |")
-        if (numberOfWrongGuesses == 2) {
-            print("    |")
+        if (numberOfWrongGuesses <= 1) {
+            print("              ")
+        } else if (numberOfWrongGuesses == 2) {
+            print("    |         ")
         } else if (numberOfWrongGuesses == 3) {
-            print("   /|")
+            print("   /|         ")
         } else if (numberOfWrongGuesses >= 4) {
-            print("   /|\\")
+            print("   /|\\        ")
         }
-        println()
+        println("You have guessed:")
         // Line 5
         print("  |")
         if (numberOfWrongGuesses == 5) {
@@ -157,15 +159,11 @@ class HangmanGame {
         } else {
             print("              ")
         }
-        print("You have guessed:")
-        println()
-        // Line 6
-        print("  |              ")
         printUsedLetters()
+        // Line 6
+        println("  |              ")
         // Line 7
-        println("--------------")
-        // Line 8
-        print("                 ")
+        print("--------------   ")
         if (numberOfWrongGuesses == 6) {
             println("Game Over")
         } else if (inProgress == false) {
