@@ -87,8 +87,7 @@ class HangmanGame {
     
     func askAnswer() {
         println("What is the answer? ")
-        // Try to shorten this incredibly long line later
-        answer = input().uppercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        answer = trim(input().uppercaseString)
         clearScreen()
     }
     

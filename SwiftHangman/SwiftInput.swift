@@ -9,10 +9,14 @@
 import Foundation
 
 // Input function from StackOverflow:
-// http://stackoverflow.com/questions/24004776/input-from-the-keyboard-in-command-line-application
-
+// questions/24004776/input-from-the-keyboard-in-command-line-application
 func input() -> String {
     var keyboard = NSFileHandle.fileHandleWithStandardInput()
     var inputData = keyboard.availableData
     return NSString(data: inputData, encoding: NSUTF8StringEncoding)
+}
+
+func trim(stringToTrim: String) -> String {
+    let charSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+    return stringToTrim.stringByTrimmingCharactersInSet(charSet)
 }
